@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100f2b">
+<title>Un pequeño universo para Sofía ✦</title>
+<style>
+:root{--night:#0c1028;--night2:#191638;--pink:#ff9fca;--lav:#c9b6ff;--cream:#fff5fb;--muted:#d7cfe8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--cream);font-family:Georgia,'Times New Roman',serif;background:radial-gradient(ellipse at 50% 0%,#332353 0%,var(--night) 55%,#080b1a 100%);min-height:100vh;overflow-x:hidden}
+button{font:inherit;cursor:pointer}
+#stars{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.7;animation:twinkle 3s infinite ease-in-out}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1.5)}}
+main{position:relative;z-index:1}
+section{padding:78px 20px;max-width:920px;margin:auto}
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:55px}
+.eyebrow{letter-spacing:.22em;text-transform:uppercase;font:11px Arial,sans-serif;color:var(--pink)}
+h1{font-size:clamp(42px,10vw,78px);line-height:1.02;font-weight:normal;margin:22px 0 18px;text-shadow:0 0 32px #ff9fca55}
+h2{font-size:clamp(30px,7vw,48px);font-weight:normal;text-align:center;margin:0 0 15px}
+p{line-height:1.8;color:var(--muted);font-size:17px}
+.hero p{max-width:520px}
+button.primary,.small-btn{border:1px solid #ffb7d7a8;background:linear-gradient(135deg,#e98cbb,#a78ae7);color:#20132f;border-radius:999px;padding:14px 23px;font-weight:bold;box-shadow:0 10px 35px #b78ce833;transition:transform .2s}
+button.primary:hover,.small-btn:hover{transform:translateY(-2px)}
+.heart{font-size:35px;display:inline-block;animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-9px)}}
+.scrollhint{font:12px Arial,sans-serif;color:#c9b6ff;margin-top:50px;letter-spacing:.12em}
+.section-intro{text-align:center;max-width:610px;margin:0 auto 30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
+.card{border:1px solid #ffffff20;background:linear-gradient(145deg,#ffffff0e,#ffffff05);border-radius:20px;padding:23px;backdrop-filter:blur(6px)}
+.card .emoji{font-size:29px}
+.card h3{font-weight:normal;font-size:23px;margin:12px 0 7px;color:#ffe0ef}
+.card p{font-size:15px;margin:0}
+.secret{width:100%;text-align:left;color:var(--cream);border:1px solid #c9b6ff55;background:#ffffff09;border-radius:18px;padding:19px;margin:8px 0;display:flex;align-items:center;gap:15px}
+.secret .seal{font-size:25px}
+.secret strong{display:block;font-size:19px;font-weight:normal}
+.secret small{display:block;color:#c9b6ff;font:12px Arial,sans-serif;margin-top:5px}
+.letter{display:none;padding:20px 22px 23px;border-left:2px solid var(--pink);margin:0 0 14px 12px;background:#ffffff08;border-radius:0 14px 14px 0}
+.letter.open{display:block;animation:appear .35s ease}
+.letter p{margin:0;font-size:16px}
+@keyframes appear{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.constellation{height:250px;position:relative;border:1px solid #ffffff1c;border-radius:24px;background:radial-gradient(ellipse,#33265377,transparent 75%);overflow:hidden;margin-top:30px}
+.constellation button{position:absolute;border:0;background:transparent;color:#fff;font-size:25px;filter:drop-shadow(0 0 9px #d8c7ff);padding:10px}
+.constellation button span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font:11px Arial,sans-serif;white-space:nowrap;color:#e7ddff}
+#starMessage{min-height:48px;text-align:center;color:#ffe0ef;font-style:italic;margin-top:16px}
+.timeline{border-left:1px solid #c9b6ff66;margin:30px 0 0 12px;padding-left:24px}
+.timeline .moment{position:relative;margin:0 0 25px}
+.timeline .moment:before{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--pink);left:-29px;top:8px;box-shadow:0 0 15px var(--pink)}
+.timeline h3{font-weight:normal;margin:0 0 5px;font-size:21px;color:#ffe0ef}
+.timeline p{margin:0;font-size:15px}
+.final-card{text-align:center;border:1px solid #ffb7d744;background:linear-gradient(145deg,#d59bd21b,#9d9bff10);border-radius:28px;padding:34px 23px}
+.final-card p{max-width:570px;margin:16px auto}
+footer{text-align:center;padding:30px 15px 50px;color:#aaa0c8;font:12px Arial,sans-serif}
+.modal{display:none;position:fixed;inset:0;background:#070817eF;z-index:5;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.modal-inner{max-width:480px;text-align:center;background:linear-gradient(145deg,#292044,#11152f);border:1px solid #ffb7d766;border-radius:24px;padding:30px}
+.modal-inner h2{font-size:32px}
+.close{margin-top:15px;background:transparent;border:1px solid #ffffff55;color:#fff;border-radius:999px;padding:10px 18px}
+@media(max-width:520px){section{padding:62px 18px}.hero{padding-top:35px}.card{padding:20px}.constellation{height:220px}}
+</style>
+</head>
+<body>
+<div id="stars" aria-hidden="true"></div>
+<main>
+<section class="hero" id="inicio">
+  <div class="heart">♡</div>
+  <div class="eyebrow">hecho con cariño, solo para ti</div>
+  <h1>Para Sofía</h1>
+  <p>Hay regalos que se guardan en una caja y otros que se quedan en el corazón. Este pequeño rincón es para que lo explores sin prisa.</p>
+  <button class="primary" onclick="document.querySelector('#universo').scrollIntoView({behavior:'smooth'})">Entrar en nuestro universo ✦</button>
+  <div class="scrollhint">DESLIZA DESPACITO ↓</div>
+</section>
+<section id="universo">
+  <div class="section-intro"><div class="eyebrow">un lugar hecho para ti</div><h2>Un universo pequeñito</h2><p>No hace falta una fecha especial para recordarle a alguien que es importante. A veces, el detalle está simplemente en tomarse el tiempo de crear algo pensando en esa persona.</p></div>
+  <div class="grid">
+    <article class="card"><div class="emoji">🌙</div><h3>Una luna</h3><p>Para recordarte que incluso en los días más tranquilos, mereces cosas bonitas y un poquito de magia.</p></article>
+    <article class="card"><div class="emoji">✨</div><h3>Una estrella</h3><p>Porque cada persona tiene una luz propia. Ojalá nunca olvides la tuya, ni siquiera cuando tengas un mal día.</p></article>
+    <article class="card"><div class="emoji">💌</div><h3>Un detalle</h3><p>Este regalo no intenta ser perfecto. Solo quiere demostrar que alguien dedicó tiempo a preparar algo para ti.</p></article>
+  </div>
+</section>
+<section id="cartas">
+  <div class="section-intro"><div class="eyebrow">abre solo si te apetece</div><h2>Cartitas para ti</h2><p>Hay sobres escondidos en esta página. Pulsa cada uno para descubrir su mensaje.</p></div>
+  <button class="secret" onclick="toggleLetter('l1')"><span class="seal">💗</span><span><strong>Si hoy necesitas una sonrisa</strong><small>PULSA PARA ABRIR EL SOBRE</small></span></button>
+  <div class="letter" id="l1"><p>Ojalá hoy encuentres aunque sea una razón pequeñita para sonreír. No todos los días tienen que ser extraordinarios para tener algo bonito. A veces basta una canción, una conversación o un momento de calma. No te olvides de tratarte con cariño.</p></div>
+  <button class="secret" onclick="toggleLetter('l2')"><span class="seal">🌷</span><span><strong>Algo que mereces recordar</strong><small>HAY PALABRAS QUE TAMBIÉN ABRAZAN</small></span></button>
+  <div class="letter" id="l2"><p>Mereces que te escuchen, que respeten tus sentimientos y que te quieran sin pedirte que dejes de ser tú. No tienes que demostrar tu valor haciendo todo perfecto. Tal como eres, sigues teniendo muchísimo que ofrecer al mundo.</p></div>
+  <button class="secret" onclick="toggleLetter('l3')"><span class="seal">🌌</span><span><strong>Un deseo para tu futuro</strong><small>UN MENSAJE GUARDADO ENTRE ESTRELLAS</small></span></button>
+  <div class="letter" id="l3"><p>Deseo que te pasen cosas que te hagan ilusión, que encuentres personas con las que puedas ser tú misma y que nunca te falten motivos para perseguir lo que sueñas. Que tu futuro te sorprenda de formas bonitas y que también aprendas a disfrutar del camino.</p></div>
+</section>
+<section id="estrellas">
+  <div class="section-intro"><div class="eyebrow">toca una estrella</div><h2>Una constelación de deseos</h2><p>Cada estrella guarda un pequeño deseo. Elige una y mira qué mensaje te toca.</p></div>
+  <div class="constellation">
+    <button style="left:12%;top:20%" onclick="star('Que encuentres paz incluso cuando el mundo vaya demasiado rápido.')">✦<span>Calma</span></button>
+    <button style="left:42%;top:12%" onclick="star('Que nunca te falte una razón para volver a ilusionarte.')">✧<span>Ilusión</span></button>
+    <button style="left:75%;top:25%" onclick="star('Que recuerdes lo mucho que vales, incluso en los días difíciles.')">✦<span>Tu luz</span></button>
+    <button style="left:24%;top:61%" onclick="star('Que tus sueños se hagan grandes y tus pasos te acerquen a ellos.')">✧<span>Sueños</span></button>
+    <button style="left:61%;top:58%" onclick="star('Que siempre encuentres un lugar donde puedas ser tú misma.')">✦<span>Hogar</span></button>
+    <button style="left:82%;top:68%" onclick="star('Que la vida te regale recuerdos que un día te hagan sonreír.')">✧<span>Recuerdos</span></button>
+  </div>
+  <p id="starMessage">Tu estrella te está esperando ✨</p>
+</section>
+<section id="capsula">
+  <div class="section-intro"><div class="eyebrow">un pequeño viaje</div><h2>Una cápsula del tiempo</h2><p>Hay cosas que vale la pena guardar, incluso si son sencillas. Esta cápsula tiene tres pequeñas invitaciones.</p></div>
+  <div class="timeline">
+    <div class="moment"><h3>Guarda un recuerdo bonito</h3><p>Piensa en un momento que te haya hecho feliz y quédate con lo bueno que te dejó.</p></div>
+    <div class="moment"><h3>Escribe algo para tu yo del futuro</h3><p>Una meta, una esperanza o una frase que te gustaría volver a leer dentro de un año.</p></div>
+    <div class="moment"><h3>Date permiso para crecer</h3><p>No tienes que tenerlo todo resuelto ahora. Puedes cambiar, aprender y descubrir nuevas versiones de ti.</p></div>
+  </div>
+</section>
+<section id="final">
+  <div class="final-card">
+    <div class="heart">♡</div>
+    <div class="eyebrow">la última sorpresa</div>
+    <h2>Un último mensajito</h2>
+    <p>Si has llegado hasta aquí, ya has recorrido este pequeño universo. Lo preparé con la idea de regalarte un momento bonito y sacarte una sonrisa. Espero que, aunque sea por un ratito, este rincón te haya hecho sentir especial.</p>
+    <button class="primary" onclick="document.querySelector('#modal').classList.add('show')">Abrir la sorpresa final ✨</button>
+  </div>
+</section>
+<footer>hecho con cariño · un pequeño universo para Sofía ✦</footer>
+</main>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Sorpresa final" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="modal-inner"><div class="heart">💗</div><h2>Que nunca te falte magia</h2><p>Gracias por dedicar un ratito a explorar este regalo. Ojalá la vida te devuelva en momentos bonitos toda la alegría que tú puedes aportar a los demás.</p><button class="close" onclick="document.querySelector('#modal').classList.remove('show')">Volver a las estrellas</button></div>
+</div>
+<script>
+const stars=document.getElementById('stars');
+for(let i=0;i<95;i++){const s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=(Math.random()*4)+'s';s.style.animationDuration=(2+Math.random()*4)+'s';s.style.opacity=(.2+Math.random()*.7);stars.appendChild(s)}
+function toggleLetter(id){document.getElementById(id).classList.toggle('open')}
+function star(message){document.getElementById('starMessage').textContent=message}
+</script>
+</body>
+</html>
